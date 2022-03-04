@@ -76,7 +76,7 @@ public class MdiGeneral extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
-        jMenuItem4.setText("Mantenimiento Aplicaciones");
+        jMenuItem4.setText("MANTENIMIENTO INVENTARIO");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -111,7 +111,7 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-      MantenimientoVendedores ventana = new MantenimientoVendedores();
+      Inventario ventana = new Inventario();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -121,7 +121,7 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-       MantenimientoAplicaciones ventana = new MantenimientoAplicaciones();
+       MantenimientoProducto ventana = new MantenimientoProducto();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();

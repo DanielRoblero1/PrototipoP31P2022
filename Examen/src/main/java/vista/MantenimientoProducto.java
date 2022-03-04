@@ -5,9 +5,10 @@
  */
 package vista;
 
-import datos.EmpleadoDAO;
-import datos.VendedorDAO;
-import domain.Empleado;
+
+
+import datos.AplicacionDAO;
+
 import domain.Vendedor;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -17,24 +18,24 @@ import java.io.File;
  *
  * @author visitante
  */
-public class MantenimientoVendedores extends javax.swing.JInternalFrame {
+public class MantenimientoProducto extends javax.swing.JInternalFrame {
 
     public void llenadoDeCombos() {
-        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-        List<Empleado> empleados = empleadoDAO.select();
+        AplicacionDAO empleadoDAO = new AplicacionDAO();
+        List<Vendedor> empleados = empleadoDAO.select();
         cbox_empleado.addItem("Seleccione una opción");
         for (int i = 0; i < empleados.size(); i++) {
-            cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
+            cbox_empleado.addItem(empleados.get(i).getNombreVendedor());
         }
     }
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID producto");
-        modelo.addColumn("nombre");
-        modelo.addColumn("Marca");
-        VendedorDAO vendedorDAO = new VendedorDAO();
-        List<Vendedor> vendedores = vendedorDAO.select();
+        modelo.addColumn("ID Producto");
+        modelo.addColumn("nombre producto");
+        modelo.addColumn("estado producto");
+        AplicacionDAO appDAO = new AplicacionDAO();
+        List<Vendedor> vendedores = appDAO.select();
         tablaVendedores.setModel(modelo);
         String[] dato = new String[3];
         for (int i = 0; i < vendedores.size(); i++) {
@@ -48,14 +49,14 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
 
     public void buscarVendedor() {
         Vendedor vendedorAConsultar = new Vendedor();
-        VendedorDAO vendedorDAO = new VendedorDAO();
+        AplicacionDAO vendedorDAO = new AplicacionDAO();
         vendedorAConsultar.setId_vendedor(Integer.parseInt(txtbuscado.getText()));
         vendedorAConsultar = vendedorDAO.query(vendedorAConsultar);
         txtNombre.setText(vendedorAConsultar.getNombreVendedor());
         txtDireccion.setText(vendedorAConsultar.getDireVendedor());
     }
 
-    public MantenimientoVendedores() {
+    public MantenimientoProducto() {
         initComponents();
         llenadoDeTablas();
         llenadoDeCombos();
@@ -88,7 +89,6 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         txtDireccion = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
@@ -98,7 +98,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("INVENTARIO");
+        setTitle("Mantenimiento Producto");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -123,7 +123,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("PRODUCTO");
+        label1.setText("Productos");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Vendedor", "ID Empleado", "Correo", "Telefono", "Direccion", "Porcentaje", "Comision"
+                "ID App", "ID Empleado", "Correo", "Telefono", "Direccion", "Porcentaje", "Comision"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -180,12 +180,10 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         txtDireccion.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Marca");
+        label5.setText("Estado");
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
-
-        jButton1.setText("jButton1");
 
         jButton2.setText("Ayuda");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -226,24 +224,19 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
                             .addComponent(txtNombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(label1)
                         .addGap(294, 294, 294))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(135, 135, 135)))
+                .addComponent(jButton2)
+                .addGap(135, 135, 135)
                 .addComponent(label4)
                 .addGap(46, 46, 46)
                 .addComponent(cbox_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,41 +246,36 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(label1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label3))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label5)))
-                                    .addComponent(lb))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnRegistrar)
-                                    .addComponent(btnEliminar)
-                                    .addComponent(btnModificar))
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label3))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnBuscar)
-                                    .addComponent(btnLimpiar))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label5)))
+                            .addComponent(lb))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnModificar))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label4)
-                            .addComponent(cbox_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                            .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnLimpiar))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label4)
+                    .addComponent(cbox_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -296,7 +284,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        VendedorDAO vendedorDAO = new VendedorDAO();
+        AplicacionDAO vendedorDAO = new AplicacionDAO();
         Vendedor vendedorAEliminar = new Vendedor();
         vendedorAEliminar.setId_vendedor(Integer.parseInt(txtbuscado.getText()));
         vendedorDAO.delete(vendedorAEliminar);
@@ -304,7 +292,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        VendedorDAO vendedorDAO = new VendedorDAO();
+       AplicacionDAO vendedorDAO = new AplicacionDAO();
         Vendedor vendedorAInsertar = new Vendedor();
         vendedorAInsertar.setNombreVendedor(txtNombre.getText());
         vendedorAInsertar.setDireVendedor(txtDireccion.getText());
@@ -319,7 +307,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        VendedorDAO vendedorDAO = new VendedorDAO();
+        AplicacionDAO vendedorDAO = new AplicacionDAO();
         Vendedor vendedorAActualizar = new Vendedor();
         vendedorAActualizar.setId_vendedor(Integer.parseInt(txtbuscado.getText()));
         vendedorAActualizar.setNombreVendedor(txtNombre.getText());
@@ -370,7 +358,6 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbox_empleado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
