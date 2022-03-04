@@ -31,9 +31,9 @@ public class MantenimientoAplicaciones extends javax.swing.JInternalFrame {
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID Aplicacion");
-        modelo.addColumn("nombre Aplicacion");
-        modelo.addColumn("estado Aplicacion");
+        modelo.addColumn("ID Producto");
+        modelo.addColumn("nombre producto");
+        modelo.addColumn("estado producto");
         AplicacionDAO appDAO = new AplicacionDAO();
         List<Vendedor> vendedores = appDAO.select();
         tablaVendedores.setModel(modelo);
@@ -98,7 +98,7 @@ public class MantenimientoAplicaciones extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Aplicacion");
+        setTitle("Mantenimiento Producto");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -123,7 +123,7 @@ public class MantenimientoAplicaciones extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Aplicacion");
+        label1.setText("Productos");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
