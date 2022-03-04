@@ -30,9 +30,9 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID producto");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Marca");
+        modelo.addColumn("ID Vendedor");
+        modelo.addColumn("nombre");
+        modelo.addColumn("Dirección");
         VendedorDAO vendedorDAO = new VendedorDAO();
         List<Vendedor> vendedores = vendedorDAO.select();
         tablaVendedores.setModel(modelo);
@@ -98,7 +98,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("CATALOGO");
+        setTitle("Mantenimiento Vendedor");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -123,7 +123,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("PRODUCTO");
+        label1.setText("Vendedor");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
         txtDireccion.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Marca");
+        label5.setText("Dirección");
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
@@ -226,10 +226,10 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
                             .addComponent(txtNombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)

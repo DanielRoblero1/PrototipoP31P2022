@@ -61,14 +61,14 @@ public class MdiGeneral extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenu3.setText("CATALOGOS");
+        jMenu3.setText("Mantenimientos");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu3ActionPerformed(evt);
             }
         });
 
-        jMenuItem3.setText("INVENTARIO");
+        jMenuItem3.setText("Mantenimiento Vendedores");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -76,7 +76,7 @@ public class MdiGeneral extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
-        jMenuItem4.setText("Mantenimiento Catalogos");
+        jMenuItem4.setText("Mantenimiento Aplicaciones");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
