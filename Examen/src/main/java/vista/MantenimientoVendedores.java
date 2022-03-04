@@ -31,7 +31,7 @@ public class MantenimientoVendedores extends javax.swing.JInternalFrame {
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID producto");
-        modelo.addColumn("Nombre");
+        modelo.addColumn("nombre");
         modelo.addColumn("Marca");
         VendedorDAO vendedorDAO = new VendedorDAO();
         List<Vendedor> vendedores = vendedorDAO.select();
